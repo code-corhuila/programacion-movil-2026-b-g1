@@ -11,15 +11,15 @@ const Saludo: FC<SaludoProps> = ({ nombre }) => {
   };
 
   return (
-    <div>
+    <>
       <IonText>
         <h2>Hola, {nombre}</h2>
       </IonText>
 
       <IonButton onClick={mostrarSaludo}>
-        Saludar
+        Mostrar saludo
       </IonButton>
-    </div>
+    </>
   );
 };
 
