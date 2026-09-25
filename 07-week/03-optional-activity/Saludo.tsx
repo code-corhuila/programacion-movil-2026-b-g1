@@ -1,10 +1,11 @@
 import { IonButton, IonText } from '@ionic/react';
+import type { FC } from 'react';
 
 interface SaludoProps {
   nombre: string;
 }
 
-const Saludo: React.FC<SaludoProps> = ({ nombre }) => {
+const Saludo: FC<SaludoProps> = ({ nombre }) => {
   const mostrarSaludo = () => {
     alert(`¡Hola, ${nombre}!`);
   };
