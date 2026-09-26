@@ -1,0 +1,24 @@
+{
+  "name": "03-optional-activity",
+  "version": "1.0.0",
+  "description": "Se creó la clase `Producto` con las propiedades `nombre` y `precio`.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "vite",
+    "build": "vite build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@ionic/react": "^9.0.5",
+    "@ionic/react-router": "^9.0.5",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^6.1.1",
+    "vite": "^8.3.1"
+  }
+}
