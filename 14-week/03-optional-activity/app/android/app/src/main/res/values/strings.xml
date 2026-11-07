@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Attendance Control</string>
+    <string name="title_activity_main">Attendance Control</string>
+    <string name="package_name">com.corhuila.attendance</string>
+    <string name="custom_url_scheme">com.corhuila.attendance</string>
+</resources>

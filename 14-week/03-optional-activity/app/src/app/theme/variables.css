@@ -1,0 +1,52 @@
+.workshop-content {
+  box-sizing: border-box;
+  width: 100%;
+  overflow-wrap: anywhere;
+}
+
+.workshop-content h2 {
+  font-size: 1.125rem;
+  line-height: 1.5;
+}
+
+.workshop-content ion-label p {
+  color: var(--ion-text-color);
+  font-size: var(--font-body);
+  white-space: normal;
+}
+
+ion-button,
+ion-back-button {
+  min-width: 44px;
+  min-height: 44px;
+}
+
+ion-button {
+  --padding-top: 0.75rem;
+  --padding-bottom: 0.75rem;
+  white-space: normal;
+  height: auto;
+}
+
+ion-button::part(native):focus-visible,
+ion-item::part(native):focus-visible {
+  outline: 3px solid var(--ion-color-primary);
+  outline-offset: 3px;
+}
+
+ion-back-button::part(native):focus-visible {
+  outline: 3px solid #ffffff;
+  outline-offset: -3px;
+}
+
+@media (max-width: 400px) {
+  .workshop-content {
+    padding: var(--space-medium);
+  }
+}
+
+@media (min-width: 768px) {
+  .workshop-content {
+    padding: 2rem;
+  }
+}
