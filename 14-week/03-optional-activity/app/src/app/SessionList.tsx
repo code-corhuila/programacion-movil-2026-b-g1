@@ -1,4 +1,5 @@
-import { useEffect, useState } from 'react';
+
+import { memo, useEffect, useMemo, useState } from 'react';
 import {
   IonButton,
   IonItem,
@@ -7,7 +8,7 @@ import {
   IonSkeletonText,
 } from '@ionic/react';
 
-type Session = {
+export type Session = {
   id: string;
   course: string;
   date: string;
@@ -22,7 +23,37 @@ type Props = {
 
 type LoadStatus = 'loading' | 'error' | 'ready';
 
-export default function SessionList({
+export function formatSessionDate(session: Session): string {
+  return `${session.date} · ${session.time}`;
+}
+
+export function filterSessions(
+  sessions: Session[],
+  mode: string | null
+): Session[] {
+  return mode === 'vacio' ? [] : sessions;
+}
+
+const SessionItem = memo(function SessionItem({
+  session,
+}: {
+  session: Session;
+}) {
+  return (
+    <IonItem
+      routerLink={`/sesiones/${session.id}/qr`}
+      detail
+    >
+      <IonLabel className="ion-text-wrap">
+        <h2>{session.course}</h2>
+        <p>{formatSessionDate(session)}</p>
+        <p>Ver QR de la sesión {session.id}</p>
+      </IonLabel>
+    </IonItem>
+  );
+});
+
+function SessionList({
   sessions,
   refreshVersion = 0,
   onSettled,
@@ -31,6 +62,11 @@ export default function SessionList({
   const [attempt, setAttempt] = useState(0);
 
   const mode = new URLSearchParams(window.location.search).get('estado');
+
+  const visibleSessions = useMemo(
+    () => filterSessions(sessions, mode),
+    [sessions, mode]
+  );
 
   useEffect(() => {
     setStatus('loading');
@@ -71,8 +107,6 @@ export default function SessionList({
     );
   }
 
-  const visibleSessions = mode === 'vacio' ? [] : sessions;
-
   if (visibleSessions.length === 0) {
     return (
       <section aria-labelledby="empty-title">
@@ -92,18 +126,10 @@ export default function SessionList({
   return (
     <IonList aria-label="Sesiones de clase">
       {visibleSessions.map(session => (
-        <IonItem
-          key={session.id}
-          routerLink={`/sesiones/${session.id}/qr`}
-          detail
-        >
-          <IonLabel className="ion-text-wrap">
-            <h2>{session.course}</h2>
-            <p>{session.date} · {session.time}</p>
-            <p>Ver QR de la sesión {session.id}</p>
-          </IonLabel>
-        </IonItem>
+        <SessionItem key={session.id} session={session} />
       ))}
     </IonList>
   );
 }
+
+export default memo(SessionList);

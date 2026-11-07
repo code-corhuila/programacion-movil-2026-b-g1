@@ -1,242 +1,71 @@
+## Week 14 — Performance Optimization and Unit Testing
 
-# Week 14 — Hardware Integration and Connectivity
+### Objective
 
-## 1. Project Overview
+The objective of this activity was to optimize the session list in the Attendance Control application, measure its performance before and after the changes, and implement two unit tests.
 
-This activity continues the development of the **Attendance Control** application using Ionic React, TypeScript, Vite, and Capacitor.
+### Screen Selected
 
-The application allows teachers to create class sessions, view session information, and access QR codes.
+The selected component was `src/app/SessionList.tsx`, which displays class sessions and handles loading, empty, and error states.
 
-During Week 14, a new camera screen was integrated to demonstrate access to device hardware using Capacitor.
+### Optimization Implemented
 
-The objective is to improve the application by integrating native functionality, maintaining clear navigation, and verifying that existing features continue working.
+The original component rendered its session items whenever the component updated.
 
-## 2. Technologies Used
+The following optimizations were implemented:
 
-- Ionic React
-- React
-- TypeScript
-- Vite
-- Capacitor 7
-- Capacitor Camera Plugin
-- Vitest
-- Android
+- `React.memo` was applied to `SessionItem` to reduce unnecessary rendering of unchanged items.
+- `React.memo` was applied to `SessionList`.
+- `useMemo` was used to reuse the visible sessions array when its dependencies remained unchanged.
+- The existing loading, error, empty, and navigation behaviors were preserved.
 
-## 3. Implemented Features
+### Performance Measurement
 
-### 3.1. Session Management
+Performance was measured using React Profiler in Firefox Developer Tools. The original and optimized versions were tested locally.
 
-The application displays a list of class sessions and allows teachers to create new sessions.
+| Measurement | Before | After |
+|---|---:|---:|
+| Initial render | 4.00 ms | 2.00 ms |
+| Update 1 | 1.00 ms | 0.00 ms |
+| Update 2 | 0.00 ms | 1.00 ms |
+| Update 3 | 2.00 ms | 2.00 ms |
 
-Session information is currently stored locally in the browser.
+The initial render duration decreased from 4.00 ms to 2.00 ms, representing a 50% reduction in this particular measurement. The update measurements varied, so the results do not establish a consistent improvement across all updates.
 
-The main screen includes:
+These measurements are preliminary and may vary depending on the browser, device, and number of sessions.
 
-- Session list.
-- Session creation.
-- QR code navigation.
-- Camera navigation.
+### Unit Tests
 
-### 3.2. Camera Integration
+Two unit tests were implemented in `src/app/SessionList.unit.test.ts`.
 
-A new camera screen was implemented using the `@capacitor/camera` plugin.
+**Test 1 — Session date formatting**
 
-The implementation includes:
+Verifies that the session date and time are formatted correctly.
 
-- Navigation to the camera screen.
-- A button to capture photographs.
-- Camera permission handling.
-- Loading indicators.
-- Error messages when camera access fails.
-- Photograph preview after a successful capture.
-- Navigation back to the session list.
+**Test 2 — Session filtering**
 
-The camera screen is available through the `/camara` route.
+Verifies that the empty-state mode returns an empty list and that normal mode preserves the available sessions.
 
-### 3.3. Navigation
+### Verification Results
 
-The existing application routes were preserved.
-
-| Route | Description |
-|---|---|
-| `/sesiones` | Displays class sessions |
-| `/sesiones/nueva` | Creates a new session |
-| `/sesiones/:id/qr` | Displays session QR information |
-| `/camara` | Opens the camera screen |
-
-## 4. Screenshots and Evidence
-
-### Evidence 1 — Session List
-
-The following screenshot shows the main screen with the existing sessions and the new **Probar cámara** button.
-
-![Session list with camera navigation](evidence/sessions-page.png)
-
-**Figure 1.** Attendance Control session list with camera navigation.
-
-### Evidence 2 — Camera Screen
-
-The following screenshot shows the camera screen with the **Tomar foto** button and the option to return to the session list.
-
-![Camera screen](evidence/camera-page.png)
-
-**Figure 2.** Camera interface implemented using Ionic React and Capacitor.
-
-These screenshots verify that the navigation and camera interface are displayed correctly in the browser.
-
-Native Android camera capture has not yet been documented.
-
-## 5. Quality & Connectivity
-
-The application was compiled successfully using `npm run build`.
-
-The existing automated tests were executed using Vitest, with six tests passing and five tests marked as pending.
-
-The camera integration uses Capacitor to access device hardware and manage camera permissions.
-
-The interface includes loading indicators and error messages to provide feedback during camera operations.
-
-The existing session management features and navigation routes were preserved.
-
-The Android platform was added and synchronized successfully using `npx cap sync android`.
-
-Token authentication, protected API requests, and HTTP 401 and network error handling remain pending implementation and verification.
-
-## 6. Installation and Execution
-
-### 6.1. Install Dependencies
-
-From the repository root:
-
-```bash
-cd 14-week/03-optional-activity/app
-npm install
-```
-
-### 6.2. Run the Web Application
-
-```bash
-npm run dev
-```
-
-Open the local URL displayed by Vite:
-
-http://localhost:5173
-
-### 6.3. Run Automated Tests
-
-```bash
-npm test
-```
-
-### 6.4. Build the Application
+The following commands were executed:
 
 ```bash
 npm run build
+npm test
 ```
 
-### 6.5. Synchronize Android
+Results:
 
-```bash
-npx cap sync android
-```
+- Production build: successful.
+- Test files executed locally: 4 passed.
+- Tests passed locally: 8.
+- Tests failed: 0.
+- Pending tests: 5, inherited from the original product catalog.
+- New Week 14 unit tests: 2 passed.
 
-### 6.6. Open Android Studio
+The product catalog tests were present in the local working directory but were excluded from the Week 14 Git commit.
 
-```bash
-npx cap open android
-```
+### Conclusion
 
-Android Studio and a configured Android SDK are required to build and run the native application.
-
-## 7. Test Results
-
-| Verification | Result |
-|---|---|
-| TypeScript compilation | Passed |
-| Vite production build | Passed |
-| Test files | 3 passed |
-| Automated tests | 6 passed |
-| Pending tests | 5 |
-| Capacitor Android synchronization | Passed |
-| Session list navigation | Verified in browser |
-| Camera screen navigation | Verified in browser |
-| Native Android camera capture | Pending verification |
-| Token authentication | Pending implementation |
-| Protected API connectivity | Pending implementation |
-
-### Build Results
-
-The application was compiled successfully using Vite.
-
-The build generated the production files inside the `dist` directory.
-
-Vite displayed a warning about large JavaScript chunks, but the compilation completed successfully.
-
-### Unit Test Results
-
-The automated tests produced the following results:
-
-- 3 test files passed.
-- 6 tests passed.
-- 5 tests marked as TODO.
-- No executed tests failed.
-
-## 8. Challenges and Solutions
-
-### Missing package-lock.json
-
-The initial `npm ci` command failed because the application did not contain a `package-lock.json` file.
-
-The issue was resolved by running:
-
-```bash
-npm install
-```
-
-### Gradle Download Error
-
-During Android platform initialization, Gradle could not download its distribution because the server was unreachable.
-
-However, the Android project was created successfully, and Capacitor synchronization completed without errors.
-
-The native Android build still requires verification.
-
-### Camera Error Handling
-
-During browser testing, the camera initially displayed a generic error message.
-
-The implementation was updated to display more specific error information and distinguish between web and native platforms.
-
-## 9. Project Structure
-
-```text
-14-week/
-└── 03-optional-activity/
-    ├── README.md
-    ├── evidence/
-    │   ├── sessions-page.png
-    │   └── camera-page.png
-    └── app/
-        ├── android/
-        ├── src/
-        │   └── app/
-        │       ├── App.tsx
-        │       ├── CameraPage.tsx
-        │       ├── SessionList.tsx
-        │       ├── SessionFormPage.tsx
-        │       └── SessionQrPage.tsx
-        ├── capacitor.config.ts
-        ├── package.json
-        └── package-lock.json
-```
-
-## 10. Conclusion
-
-During Week 14, the Attendance Control application was extended with camera integration using Capacitor.
-
-The application continues to compile successfully, and its existing automated tests pass.
-
-The camera interface is accessible from the session list, and the implementation includes permission checks, loading feedback, and error handling.
-
-The next steps are to verify camera capture on an Android device and implement authentication and protected API connectivity.
+This activity helped demonstrate how React memoization can reduce unnecessary rendering in a session list. It also reinforced the importance of measuring performance rather than assuming that an optimization is always faster. Finally, unit tests were added to verify session formatting and filtering behavior.
