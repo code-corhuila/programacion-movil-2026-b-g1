@@ -1,0 +1,80 @@
+/* Layout of the Week 14 screens. Colours come from Ionic variables. */
+
+.state-view {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 48px 24px;
+  text-align: center;
+}
+
+.state-icon {
+  font-size: 48px;
+}
+
+.offline-banner {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 8px 16px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: var(--ion-color-warning);
+  color: var(--ion-color-warning-contrast);
+  font-size: 0.9rem;
+}
+
+.login-wrapper {
+  max-width: 420px;
+  margin: 24px auto 0;
+}
+
+.login-subtitle {
+  color: var(--ion-color-medium);
+  margin-top: 0;
+}
+
+.notice {
+  margin: 12px 0;
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: rgba(var(--ion-color-primary-rgb), 0.12);
+  color: var(--ion-color-primary);
+}
+
+.demo-hint {
+  display: block;
+  margin-top: 16px;
+  text-align: center;
+}
+
+.summary-label {
+  margin: 0;
+  color: var(--ion-color-medium);
+}
+
+.summary-value {
+  margin: 4px 0 0;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--ion-text-color);
+}
+
+.avatar-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.profile-avatar {
+  width: 112px;
+  height: 112px;
+}
+
+.avatar-placeholder {
+  width: 100%;
+  height: 100%;
+  color: var(--ion-color-medium);
+}
