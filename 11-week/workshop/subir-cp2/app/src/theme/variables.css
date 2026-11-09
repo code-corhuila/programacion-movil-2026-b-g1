@@ -1,0 +1,52 @@
+/* Tokens de diseño de Movie Rater */
+:root {
+  /* Color primario: botones y acciones principales */
+  --ion-color-primary: #0054e9;
+  --ion-color-primary-rgb: 0, 84, 233;
+  --ion-color-primary-contrast: #ffffff;
+  --ion-color-primary-contrast-rgb: 255, 255, 255;
+  --ion-color-primary-shade: #004acd;
+  --ion-color-primary-tint: #1a65eb;
+
+  /* Color secundario: estrellas y calificaciones */
+  --ion-color-secondary: #b45309;
+  --ion-color-secondary-rgb: 180, 83, 9;
+  --ion-color-secondary-contrast: #ffffff;
+  --ion-color-secondary-contrast-rgb: 255, 255, 255;
+  --ion-color-secondary-shade: #9e4908;
+  --ion-color-secondary-tint: #bc6422;
+
+  /* Éxito: reseña guardada */
+  --ion-color-success: #1b7f3b;
+  --ion-color-success-rgb: 27, 127, 59;
+  --ion-color-success-contrast: #ffffff;
+  --ion-color-success-contrast-rgb: 255, 255, 255;
+  --ion-color-success-shade: #187034;
+  --ion-color-success-tint: #328c4f;
+
+  /* Error: fallos de red y validación */
+  --ion-color-danger: #c5000f;
+  --ion-color-danger-rgb: 197, 0, 15;
+  --ion-color-danger-contrast: #ffffff;
+  --ion-color-danger-contrast-rgb: 255, 255, 255;
+  --ion-color-danger-shade: #ad000d;
+  --ion-color-danger-tint: #cb1a27;
+
+  /* Texto secundario (ayudas y subtítulos) */
+  --app-color-texto-secundario: #5f5f5f;
+
+  /* Tipografía */
+  --app-font-sm: 0.875rem;
+  --app-font-md: 1rem;
+  --app-font-lg: 1.25rem;
+  --app-font-xl: 1.5rem;
+
+  /* Espacios */
+  --app-space-xs: 4px;
+  --app-space-sm: 8px;
+  --app-space-md: 16px;
+  --app-space-lg: 24px;
+
+  /* Área táctil mínima */
+  --app-touch-min: 44px;
+}

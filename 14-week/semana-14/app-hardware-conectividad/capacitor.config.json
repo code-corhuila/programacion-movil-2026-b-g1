@@ -1,0 +1,6 @@
+{
+  "appId": "co.edu.corhuila.hardwareapp",
+  "appName": "App Hardware",
+  "webDir": "dist",
+  "server": { "androidScheme": "http", "cleartext": true }
+}

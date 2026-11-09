@@ -1,0 +1,10 @@
+.bottom-nav {
+  display: flex;
+  justify-content: space-around;
+}
+
+.bottom-nav ion-button {
+  flex: 1;
+  min-height: var(--app-touch-min);
+  font-size: var(--app-font-sm);
+}
