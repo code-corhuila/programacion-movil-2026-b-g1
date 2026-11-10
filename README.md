@@ -1,39 +1,45 @@
-# Programacion Movil - 2026-B
+# Ice Cream App (ICA) - Semana 9
 
-Repositorio de clase - Corporacion Universitaria del Huila (CORHUILA).
-
-| | |
-| --- | --- |
-| **Grupo** | 1 |
-| **Horario** | Lunes 6:30 p. m. - 8:10 p. m.<br>Viernes 7:20 p. m. - 8:10 p. m. |
-| **Aula** | C5-508 |
-| **Semestre** | 2026-B |
-| **Frecuencia** | 2 sesiones por semana |
+Actividad calificable: App Ionic React + API.
 
 ## Estructura
 
-El repositorio esta organizado en 16 semanas (`01-week` .. `16-week`).
-Cada semana tiene la siguiente forma:
+- `backend/`: API REST Express con endpoints GET y POST.
+- `frontend/`: aplicación Ionic React que consume la API mediante `fetch`.
 
-```
-NN-week/
-|-- 01-session/           # Primera sesion de la semana
-|-- 02-session/           # Segunda sesion de la semana
-\-- 03-optional-activity/ # Actividad opcional de refuerzo
-```
+## Requisitos de la actividad cubiertos
 
-- Las carpetas `NN-session` contienen el material trabajado en clase.
-- `optional-activity` guarda ejercicios opcionales de refuerzo, no calificables.
+- API REST mínima con Express.
+- GET y POST con JSON.
+- Listado de datos en Ionic React.
+- Formulario para crear un nuevo registro.
+- `useState` para el manejo de estado.
+- Manejo de errores de red.
+- Navegación a pantalla de detalle.
+- Sección `Architecture` en inglés en este README.
 
-## Como trabajar
+## Architecture
+
+The backend is an Express REST API that exposes JSON endpoints for the Ice Cream App. The `GET /ice-creams` endpoint returns the available ice creams to the Ionic React application. The `POST /ice-creams` endpoint receives JSON data and creates a new ice cream record. The frontend consumes these endpoints with the browser `fetch` API. React `useState` is used to manage form fields, loading state, and network errors. The application also navigates from the list to a detail screen for the selected ice cream.
+
+## Ejecución
+
+### Backend
 
 ```bash
-git clone https://github.com/code-corhuila/programacion-movil-2026-b-g1.git
-cd programacion-movil-2026-b-g1
+cd backend
+npm install
+npm start
 ```
 
-Antes de cada clase, actualiza tu copia local:
+### Frontend
+
+En otra terminal:
 
 ```bash
-git pull origin main
+cd frontend
+npm install
+npm run dev
 ```
+
+La API usa `http://localhost:3000` y el frontend usa `http://localhost:5173`.
