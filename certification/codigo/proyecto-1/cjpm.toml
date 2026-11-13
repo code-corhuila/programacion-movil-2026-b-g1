@@ -1,0 +1,6 @@
+[package]
+  cjc-version = "0.53.13"
+  name = "parte_1_cangjie"
+  description = "Ejercicios practicos Parte 1 - Certificacion Huawei Cangjie Programming"
+  version = "1.0.0"
+  output-type = "executable"
