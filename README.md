@@ -37,3 +37,7 @@ Antes de cada clase, actualiza tu copia local:
 ```bash
 git pull origin main
 ```
+
+## Architecture
+
+This project consists of an Ionic React frontend integrated with a custom Express.js REST API. The API serves endpoints for fetching all tasks via GET `/api/tasks` and creating new task items using POST `/api/tasks`. Additionally, individual task resources are accessed through GET `/api/tasks/:id` to display full item specifications. The React frontend leverages standard React Hooks such as `useState` and `useEffect` alongside asynchronous JavaScript `fetch` calls to consume these JSON resources dynamically. Network errors and asynchronous loading states are gracefully captured and displayed to ensure an optimal user experience. Navigation between the task list and the detailed item view is efficiently handled through standard React Router Dom components integrated into Ionic React.
